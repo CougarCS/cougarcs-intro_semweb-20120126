@@ -1,0 +1,188 @@
+# Run `vroom --vroom` to start the show!
+---- config
+# Basic config options.
+title: Intro to the Semantic Web
+indent: 5
+height: 18
+width: 69
+skip: 0
+#skip: 100
+
+#vimrc: |
+#   echo "test"
+
+# The following options are for Gvim usage.
+# vim: gvim
+# gvimrc: |
+#   set fuopt=maxhorz,maxvert
+#   set guioptions=egmLtT
+#   set guifont=Bitstream_Vera_Sans_Mono:h18
+#   set guicursor=a:blinkon0-ver25-Cursor
+#   colorscheme default
+
+---- center
+Introduction to the
+Semantic Web
+
+by zaki
+
+2012-01-26
+
+----
+== Introduction
+
+What?
+     A collection of technologies for organizing data and
+     their relationships with other data in a machine-readable
+     format.
++
+
+   It's all about metadata.
+
+----
+
+Relational model? SQL?
+
++
+- Relational DBs use tables
+    rows and columns, strict set of data per entity,
+    need ORMs to help think about extensions
++
+- Semantic Web tech uses graphs [1]
+    allows for looser data
+      - missing values,
+      - multiple relationships per entity
+
+[1]: a simplification, actually a hypergraph
+     <http://www.appzdata.com/fyd/2011/08/28/rdf-is-not-a-directed-labeled-graph/>
+
+---- center
+
+graph -> explore the data
+
+----
+== RDF: Resource Description Framework
+
+model for representing relatioships
+
+based on sets of triples
+
+   [subject] [predicate] [object]
+
++ e.g.
+
+   [earth_sky] [has_color] [color_blue]
+
++ except RDF uses URIs as identifiers.
+
+----
+
+RDF is not a file format
+
+multiple serializations, e.g.:
+
+- XML (cumbersome to write by hand)
+- Turtle & N3 (newer)
+
+Turtle is the simplest
+
+----
+It looks like this:
+
+ ----------------------------------------------------------
+ | @prefix dc: <http://purl.org/dc/elements/1.1/> .       |
+ |                                                        |
+ | <http://cougarcs.com/> dc:title "CougarCS".            |
+ | <http://www.uh.edu/> dc:title "University of Houston". |
+ ----------------------------------------------------------
+
+----
+ ----------------------------------------------------------
+ | @prefix dc: <http://purl.org/dc/elements/1.1/> .       |
+ |                                                        |
+ | <http://cougarcs.com/> dc:title "CougarCS".            |
+ | <http://www.uh.edu/> dc:title "University of Houston". |
+ ----------------------------------------------------------
+
+The @prefix part refers to a namespace that is expanded.
+
+ ------------------------------------------------------------------
+ | <http://cougarcs.com/> <http://purl.org/dc/elements/1.1/title> |
+ |      "CougarCS".                                               |
+ ------------------------------------------------------------------
+----
+As a graph this would be:
+
+ -------------------------------------------------------
+ | --------------------------  dc:title   ------------ |
+ | | <http://cougarcs.com/> | ----------> | CougarCS | |
+ | --------------------------             ------------ |
+ -------------------------------------------------------
+
+----
+
+<http://purl.org/dc/elements/1.1/> 
+  - URI for the Dublin Core metadata standard
+  - defines a vocabulary for describing works
+
+    title, creator, subject, description, publisher,
+    contributor, date, type, format, identifier, source,
+    language, relation, coverage, rights
+
+  - digital libraries!
+
+---- center
+
+What else?
+
+Just storing data?
+
+----
+
+SPARQL: 
+    SPARQL Protocol and RDF Query Language
+
+(yes, it's recursive)
+
+---- center
+DBpedia
+
+<http://dbpedia.org/>
+----
+== Examples
+
+<http://wiki.dbpedia.org/OnlineAccess#h28-5>
+
+---- center
+
+DBtune
+
+<http://dbtune.org/>
+
+----
+
+SPARQL examples:
+
+<url:ex01.rq>
+<url:ex02.rq>
+<url:query.pl>
+
+
+----
+
+The Linking Open Data cloud diagram
+
+<http://richard.cyganiak.de/2007/10/lod/>
+
+Lots of datasets!!!
+
+----
+
+Further information
+
+Semantic Web wiki
+	<http://semanticweb.org/wiki/Main_Page>
+Linked Data
+	<http://linkeddata.org/>
+SPARQL By Example: A Tutorial
+	<http://www.cambridgesemantics.com/2008/09/sparql-by-example/>

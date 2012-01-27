@@ -1,0 +1,2 @@
+#!/bin/sh
+echo 	"[<http://cougarcs.com/>] -  dc:title  -> [CougarCS]" | graph-easy

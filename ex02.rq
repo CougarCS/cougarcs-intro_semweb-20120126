@@ -1,0 +1,15 @@
+# SPARQL endpoint: <http://dbtune.org/musicbrainz/sparql>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX mo: <http://purl.org/ontology/mo/>
+SELECT ?album_name
+WHERE {
+  ?artist a mo:MusicArtist.
+  ?artist rdfs:label "mind.in.a.box".
+  ?album foaf:maker ?artist.
+  ?album a mo:Record.
+  ?album rdfs:label ?album_name.
+}
+LIMIT 100
+
+# vim: ft=sparql
